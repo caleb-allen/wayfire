@@ -35,7 +35,9 @@ class wayfire_output_manager : public wf::plugin_interface_t
             return true;
         }
 
+        auto tiled_edges = view->tiled_edges;
         wf::get_core().move_view_to_output(view, next);
+        view->tile_request(tiled_edges);
         idle_next_output.run_once([=] () {
             wf::get_core().focus_output(next);
         });
