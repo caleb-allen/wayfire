@@ -650,6 +650,7 @@ void wf::init_xwayland()
 
     if (xwayland_handle)
     {
+        wlr_xwayland_set_scale(xwayland_handle, 1.333);
         on_created.connect(&xwayland_handle->events.new_surface);
         on_ready.connect(&xwayland_handle->events.ready);
         wf::get_core().connect_signal("shutdown", &on_shutdown);
